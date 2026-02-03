@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Klearvision — Coming Soon</title>
+  <meta name="description" content="Klearvision — African Language Dubbing. Global stories, local voices. Website update coming soon." />
+
+  <style>
+    :root{
+      --bg1:#0f0618;
+      --bg2:#2a0f3a;
+      --card:#140a1fdd;
+      --stroke:#ffffff1a;
+      --text:#f6f2ff;
+      --muted:#cdbfe6;
+      --accent:#b26cff;
+      --accent2:#7a2fd6;
+      --shadow: 0 18px 70px rgba(0,0,0,.45);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(900px 500px at 15% 20%, rgba(178,108,255,.22), transparent 55%),
+        radial-gradient(900px 500px at 85% 70%, rgba(122,47,214,.22), transparent 55%),
+        linear-gradient(140deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:28px 18px 48px;
+      display:flex;
+      min-height:100vh;
+      align-items:center;
+    }
+
+    .grid{
+      width:100%;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    @media (max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(800px 280px at 20% 0%, rgba(178,108,255,.22), transparent 60%),
+                  radial-gradient(700px 260px at 90% 100%, rgba(122,47,214,.20), transparent 60%);
+      pointer-events:none;
+      opacity:.9;
+    }
+
+    .card > *{ position:relative; }
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .logo{
+      width:72px;
+      height:72px;
+      border-radius:16px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--stroke);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      flex: 0 0 auto;
+    }
+
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      padding:10px;
+    }
+
+    .brand{
+      line-height:1.1;
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:1.35rem;
+      letter-spacing:.2px;
+    }
+
+    .brand p{
+      margin:.35rem 0 0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .hero h2{
+      margin:10px 0 10px;
+      font-size: clamp(1.6rem, 2.4vw, 2.35rem);
+      letter-spacing:.2px;
+    }
+
+    .hero .tagline{
+      margin:0 0 14px;
+      font-size:1.05rem;
+      color:var(--text);
+      opacity:.95;
+    }
+
+    .hero .tagline strong{
+      color: var(--accent);
+      font-weight:700;
+    }
+
+    .hero .copy{
+      margin:0 0 18px;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:1rem;
+      max-width:62ch;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .pill{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-size:.92rem;
+      white-space:nowrap;
+    }
+
+    .pill span{
+      color: var(--muted);
+      margin-left:6px;
+    }
+
+    .timer-card{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .timer-title{
+      margin:0;
+      font-size:1.1rem;
+      color:var(--text);
+    }
+
+    .timer-sub{
+      margin:6px 0 0;
+      color:var(--muted);
+      line-height:1.45;
+      font-size:.98rem;
+    }
+
+    .countdown{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+
+    .unit{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:14px 10px;
+      text-align:center;
+    }
+
+    .num{
+      font-size: clamp(1.55rem, 2.4vw, 2.05rem);
+      font-weight:800;
+      letter-spacing:.5px;
+    }
+
+    .lbl{
+      margin-top:6px;
+      font-size:.86rem;
+      color:var(--muted);
+      letter-spacing:.3px;
+    }
+
+    .actions{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .btn{
+      appearance:none;
+      border:0;
+      border-radius:16px;
+      padding:12px 14px;
+      font-weight:700;
+      cursor:pointer;
+      transition: transform .06s ease, filter .15s ease;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      user-select:none;
+    }
+
+    .btn:active{ transform: translateY(1px); }
+
+    .primary{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #12061d;
+      box-shadow: 0 12px 30px rgba(178,108,255,.25);
+    }
+
+    .secondary{
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--stroke);
+      color: var(--text);
+    }
+
+    .fine{
+      font-size:.9rem;
+      color:var(--muted);
+      margin:0;
+      text-align:center;
+    }
+
+    footer{
+      margin-top:14px;
+      padding-top:10px;
+      border-top:1px solid var(--stroke);
+      color:var(--muted);
+      font-size:.9rem;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .link{
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255,255,255,.25);
+    }
+    .link:hover{ border-bottom-color: rgba(255,255,255,.55); }
+
+    @media (max-width: 520px){
+      .countdown{ grid-template-columns: repeat(2, 1fr); }
+      header{ gap:12px; }
+      .logo{ width:64px; height:64px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="grid">
+
+      <div class="card hero">
+        <header>
+          <div class="logo" aria-label="Klearvision logo">
+            <img src="assets/klearvision-logo.png" alt="Klearvision" />
+          </div>
+          <div class="brand">
+            <h1>Klearvision</h1>
+            <p>African Language Dubbing</p>
+          </div>
+        </header>
+
+        <h2>Exciting update to our website coming soon</h2>
+
+        <p class="tagline">
+          <strong>African Language Dubbing</strong>, Global Stories, Local Voices
+        </p>
+
+        <p class="copy">
+          We help brands, studios, and creators bring stories to life in African languages—
+          with authentic voice talent, culturally-aware adaptation, and broadcast-ready delivery.
+        </p>
+
+        <div class="pill-row" aria-label="What we do">
+          <div class="pill">Dubbing <span>• African languages</span></div>
+          <div class="pill">Localization <span>• cultural nuance</span></div>
+          <div class="pill">Voice Talent <span>• casting + direction</span></div>
+          <div class="pill">Delivery <span>• QC + mastering</span></div>
+        </div>
+
+        <footer>
+          <div>© <span id="year"></span> Klearvision</div>
+          <div><a class="link" href="mailto:hello@klearvision.com">hello@klearvision.com</a></div>
+        </footer>
+      </div>
+
+      <div class="card timer-card">
+        <div>
+          <h3 class="timer-title">Launching in</h3>
+          <p class="timer-sub">
+            Our refreshed experience is on the way. Check back soon for updates.
+          </p>
+
+          <div class="countdown" role="timer" aria-live="polite">
+            <div class="unit">
+              <div class="num" id="days">30</div>
+              <div class="lbl">Days</div>
+            </div>
+            <div class="unit">
+              <div class="num" id="hours">00</div>
+              <div class="lbl">Hours</div>
+            </div>
+            <div class="unit">
+              <div class="num" id="mins">00</div>
+              <div class="lbl">Minutes</div>
+            </div>
+            <div class="unit">
+              <div class="num" id="secs">00</div>
+              <div class="lbl">Seconds</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="mailto:hello@klearvision.com?subject=Klearvision%20Website%20Update%20-%20Keep%20Me%20Posted">
+            Notify me by email
+          </a>
+          <button class="btn secondary" id="restart">
+            Restart 30-day timer (this device)
+          </button>
+          <p class="fine">Timer is saved on this device so it won’t reset every refresh.</p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const STORAGE_KEY = "klearvision_launch_target_v1";
+    const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+
+    function getOrCreateTarget() {
+      const existing = localStorage.getItem(STORAGE_KEY);
+      if (existing) {
+        const t = Number(existing);
+        if (!Number.isNaN(t) && t > Date.now() - THIRTY_DAYS_MS) return t;
+      }
+      const target = Date.now() + THIRTY_DAYS_MS;
+      localStorage.setItem(STORAGE_KEY, String(target));
+      return target;
+    }
+
+    let targetTime = getOrCreateTarget();
+
+    const els = {
+      d: document.getElementById("days"),
+      h: document.getElementById("hours"),
+      m: document.getElementById("mins"),
+      s: document.getElementById("secs"),
+    };
+
+    function pad2(n){ return String(n).padStart(2, "0"); }
+
+    function tick() {
+      const now = Date.now();
+      let diff = targetTime - now;
+
+      if (diff <= 0) {
+        els.d.textContent = "0";
+        els.h.textContent = "00";
+        els.m.textContent = "00";
+        els.s.textContent = "00";
+        return;
+      }
+
+      const days = Math.floor(diff / (24 * 60 * 60 * 1000));
+      diff -= days * 24 * 60 * 60 * 1000;
+
+      const hours = Math.floor(diff / (60 * 60 * 1000));
+      diff -= hours * 60 * 60 * 1000;
+
+      const mins = Math.floor(diff / (60 * 1000));
+      diff -= mins * 60 * 1000;
+
+      const secs = Math.floor(diff / 1000);
+
+      els.d.textContent = String(days);
+      els.h.textContent = pad2(hours);
+      els.m.textContent = pad2(mins);
+      els.s.textContent = pad2(secs);
+    }
+
+    tick();
+    const interval = setInterval(() => {
+      tick();
+      if (Number(els.d.textContent) === 0 &&
+          els.h.textContent === "00" &&
+          els.m.textContent === "00" &&
+          els.s.textContent === "00") {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    document.getElementById("restart").addEventListener("click", () => {
+      targetTime = Date.now() + THIRTY_DAYS_MS;
+      localStorage.setItem(STORAGE_KEY, String(targetTime));
+      tick();
+    });
+  </script>
+</body>
+</html>
