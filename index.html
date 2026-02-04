@@ -286,6 +286,33 @@
       header{ gap:12px; }
       .logo{ width:64px; height:64px; }
     }
+    /* ===== SOCIAL ICONS FIX ===== */
+
+.icons{
+  display:flex;
+  align-items:center;
+  gap:26px;              /* space between icons */
+  margin-top:10px;
+}
+
+.icons a{
+  color:#ffffff;         /* forces icons to white */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.icons svg{
+  width:48px;            /* ICON SIZE — change this if you want bigger */
+  height:48px;
+  fill:currentColor;
+  transition:transform .2s ease, opacity .2s ease;
+}
+
+.icons svg:hover{
+  transform:scale(1.15);
+  opacity:0.85;
+}
   </style>
 </head>
 
